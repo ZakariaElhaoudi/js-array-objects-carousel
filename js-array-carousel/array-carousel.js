@@ -55,9 +55,9 @@ const items = elContainer.querySelectorAll('.square');
         
 items[immagineAttiva].classList.add('active');  
 
-// Nascondi tutte le miniature, tranne la prima
+// opacità tutte le miniature, tranne la prima
 const imgThumbnails =imgOpacity.querySelectorAll('.img-thumbnails');
-imgThumbnails[immagineAttiva].classList.add('opacity');
+imgThumbnails[immagineAttiva].classList.remove('opacity');
         
 
 /*Al click dell’utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata al posto della precedente.*/
@@ -76,17 +76,17 @@ imgThumbnails[immagineAttiva].classList.add('opacity');
       }
       items[immagineAttiva].classList.add('active');
 
-      // Nascondi le miniature
-      const itemsThumbnails = elContainer.querySelectorAll('.img-thumbnails');
-      itemsThumbnails[immagineAttiva].classList.add('opacity');
+      // opacità le miniature
+      const imgThumbnail = elContainer.querySelectorAll('.img-thumbnails');
+      imgThumbnail[immagineAttiva].classList.add('opacity');
 
       immagineAttiva++;
         
       if (immagineAttiva >= immagini.length) {
         immagineAttiva = 0; 
       }
-      itemsThumbnails[immagineAttiva].classList.remove('opacity');
-    };
+      imgThumbnail[immagineAttiva].classList.remove('opacity');
+  };
 
   bottomArrow.addEventListener('click', bottomButton)
   
@@ -101,4 +101,15 @@ imgThumbnails[immagineAttiva].classList.add('opacity');
     }
      
     items[immagineAttiva].classList.add('active');
+
+     // opacità le miniature
+     const imgThumbnail = elContainer.querySelectorAll('.img-thumbnails');
+     imgThumbnail[immagineAttiva].classList.add('opacity');
+
+     immagineAttiva--;
+       
+     if (immagineAttiva < 0) {
+      immagineAttiva = immagini.length -1 ;
+     }
+     imgThumbnail[immagineAttiva].classList.remove('opacity');
  };
