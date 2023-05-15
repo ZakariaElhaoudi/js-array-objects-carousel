@@ -25,6 +25,22 @@
 
 }
 
+.dati{
+    color: white;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+
+
+#container  #list-item {
+    text-align: center;
+    width: 50vw;
+    height: 30vw;
+    margin: 0 auto;
+}
+
 
 #list-item img {
     object-fit: scale-down;
@@ -47,19 +63,22 @@
     position: absolute;
     right: 50%;
     top: 0;
-    transform: translate(-50%);
+    transform: translate(0,-50%);
+    z-index: 10;
 }
 
 .bottom-arrow {
     position: absolute;
     right: 50%;
     bottom: 0;
-    transform: translate(-50%);
+    transform: translate(0,-50%);
+    z-index: 10;
 }
 
 
 .square{
     display: none;
+    position: relative;
 }
 
 .active { 
@@ -82,28 +101,11 @@
 }
 .opacity {
     opacity: 0.5;
-}
-
-
-#container  #list-item {
-    text-align: center;
-    width: 50vw;
-    height: 30vw;
-    margin: 0 auto;
-}
-
-
-#container #list-item > img {
-    object-fit: scale-down;
-    width: 100%;
-    height: 100%;
-}
-
-
-#side-bar-container .opacity {
     position: absolute;
     z-index: 12;
     background-color: rgba(0, 0, 0, 0.541);
     width: 6vw;
     height: 6vw;
 }
+
+

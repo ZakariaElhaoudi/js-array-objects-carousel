@@ -40,7 +40,7 @@ for (let i = 0; i < immagini.length; i++) {
   
   // Stampare le stesse informazioni su DOM 
   elContainer.innerHTML += `<div class ="square">  
-                          <div class ="membro img"><img src="${datiImmagine.image}" alt="immagine"></div>
+                          <img src="${datiImmagine.image}" alt="immagine">
                           <div class ="dati"><h2>${datiImmagine.title}</h2> ${datiImmagine.text}</div>
                           </div>`
 
@@ -51,7 +51,7 @@ for (let i = 0; i < immagini.length; i++) {
 
 
 // Nascondi tutte le immagini, tranne la prima
-const items = container.querySelectorAll('.square');
+const items = elContainer.querySelectorAll('.square');
         
 items[immagineAttiva].classList.add('active');  
 
@@ -61,57 +61,44 @@ imgThumbnails[immagineAttiva].classList.add('opacity');
         
 
 /*Al click dell’utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata al posto della precedente.*/
-  topArrow.addEventListener('click',
-     function () { 
+  topArrow.addEventListener('click', topButton)
+     
+  
+  function topButton() { 
             
-      const items = container.querySelectorAll('.square');
-        
+      const items = elContainer.querySelectorAll('.square');
       items[immagineAttiva].classList.remove('active');
         
       immagineAttiva++;
         
       if (immagineAttiva >= immagini.length) {
         immagineAttiva = 0;
-        
       }
-        
       items[immagineAttiva].classList.add('active');
 
-
-
-      const itemsThumbnails = container.querySelectorAll('.img-thumbnails');
-        
+      // Nascondi le miniature
+      const itemsThumbnails = elContainer.querySelectorAll('.img-thumbnails');
       itemsThumbnails[immagineAttiva].classList.add('opacity');
-        
+
       immagineAttiva++;
         
       if (immagineAttiva >= immagini.length) {
-        immagineAttiva = 0;
-        
+        immagineAttiva = 0; 
       }
-        
       itemsThumbnails[immagineAttiva].classList.remove('opacity');
+    };
 
-
+  bottomArrow.addEventListener('click', bottomButton)
+  
+  function bottomButton() { 
+    const items = elContainer.querySelectorAll('.square');
+    items[immagineAttiva].classList.remove('active');
+      
+    immagineAttiva--;
+      
+    if (immagineAttiva < 0) {
+      immagineAttiva = immagini.length -1 ;
     }
-  )
-
-  bottomArrow.addEventListener('click',
-  function () { 
-         
-   const items = container.querySelectorAll('.square');
      
-   items[immagineAttiva].classList.remove('active');
-     
-   immagineAttiva--;
-     
-   if (immagineAttiva < 0) {
-     immagineAttiva = immagini.length -1 ;
-     
-   }
-     
-   items[immagineAttiva].classList.add('active');
-
-
- }
-)
+    items[immagineAttiva].classList.add('active');
+ };
